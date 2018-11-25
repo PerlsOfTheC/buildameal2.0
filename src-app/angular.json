@@ -26,8 +26,9 @@
               "src/styles.css"
             ],
             "scripts": [
-              "assets/homepageStyle.js",
-              "assets/yummly.js"
+              "src/assets/homepageStyle.js",
+              "src/assets/yummly.js",
+              "src/assets/recipes.js"
             ]
           },
           "configurations": {

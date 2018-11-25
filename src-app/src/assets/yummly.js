@@ -1,14 +1,14 @@
-require('dotenv').config();
+//require('dotenv').config();
 const request = require('request');
+const recipe = require('./recipes.js');
+// const recipe = require('./recipes');
 
-var recipeName;
-var totalTime;
-var id;
-var rating;
-var attributes;
+// yummlyKey = process.env.YUMMLY_API_KEY;
+// yummlyID = process.env.YUMMLY_API_ID;
 
-yummlyKey = process.env.YUMMLY_API_KEY;
-yummlyID = process.env.YUMMLY_API_ID;
+const yummlyKey = '9d56fac831cb10ba6e7052f0eb69dbf6';
+const yummlyID = '8e697086';
+
 
 // validates keys
 if (typeof yummlyKey !== 'undefined' && typeof yummlyID !== 'undefined') {
@@ -25,7 +25,7 @@ const Config = {
 };
 
 // Builds recipe query using the recipes endpoint
-function searchForRecipe(ingredientList) {
+function searchForRecipe (ingredientList)  {
   var url = Config.endpoints.recipesUrl + appQuery;
 
   if (ingredientList && ingredientList.length && Array.isArray(ingredientList)) {
@@ -199,49 +199,9 @@ function getJSON(url, cb) {
   request(options, callback);
 }
 
+//var searchQ = searchForRecipe(ingredientsList)
 
-ingredientsList = ['juice', 'carrot', 'milk'];
-
-function getRecipe(ingredientsList,maxRes,Cuisine) {
-    var searchQ = searchForRecipe(ingredientsList)
-        .requiredIngredients(ingredientsList)
-        .maxResults(maxRes)
-        .requiredCuisines(Cuisine)
-        .getURL();
-    return searchQ;
-}
-function getRecipeId() {
-  return id;
-}
-function getRecipeName() {
-    return recipeName;
-}
-function getTotalTime() {
-    return totalTime;
-}
-
-function assign(ingredientsList,maxRes,Cuisine) {
-  var searchQ = getRecipe(ingredientsList,maxRes,Cuisine);
-  getJSON(searchQ, function(get) {
-    get.matches.forEach(function(recipe) {
-    recipeIDQueue.push(JSON.parse(recipe.id));
-
-    recipeName = recipe.id.name;
-    console.log(recipe.id.name);
-
-      totalTime = recipe.id.totalTime;
-      console.log(recipe.id.totalTime);
-
-      id=recipe.id;
-      console.log(recipe.id);
-
-      // rating = recipe.id.ratin;
-      attributes= recipe.id.attributes;
-     console.log(recipe.id.attributes);
-    });
-  });
-}
-// THIS IS HOW TO GET specific data from the JSON request
+//THIS IS HOW TO GET specific data from the JSON request
 // getJSON(searchQ, function(get) {
 //   get.matches.forEach(function(recipe) {
 //     recipeIDQueue.push(JSON.parse(recipe.id));
@@ -250,12 +210,13 @@ function assign(ingredientsList,maxRes,Cuisine) {
 //     console.log(recipe.ingredients);
 //     console.log(recipe);
 //   });
+//   return recipeIDQueue;
 // });
 
 // Function that will recieve a recipeURL and return detailed info about recipe (JSON)
 // uses recipe endpoint
 // TODO: figure out how to send input, sending to console is temporary
-function getRecipeInfo(urlList) {
+function getRecipeInfo (urlList) {
   if (Array.isArray(urlList)) {
     for (var i = 0; i < urlList.length; i++) {
       getJSON(urlList[i], function (get) {
@@ -267,12 +228,12 @@ function getRecipeInfo(urlList) {
 }
 
 // Builds recipe url for the recipe endpoint
-function getRecipeURLs(input) {
+function getRecipeURLs (input) {
   var recipeUrlQueue = [];
 
   if (Array.isArray(input)) {
     for (var i = 0; i < input.length; i++) {
-      url = Config.endpoints.recipeUrl;
+      let url = Config.endpoints.recipeUrl;
       url += input[i];
       url += appQuery;
       recipeUrlQueue.push(url);
@@ -280,7 +241,7 @@ function getRecipeURLs(input) {
   }
 
   else if (typeof input === 'string') {
-    url = Config.endpoints.recipeUrl;
+    let url = Config.endpoints.recipeUrl;
     url += input;
     url += appQuery;
     recipeUrlQueue.push(url);
@@ -294,7 +255,9 @@ function getRecipeURLs(input) {
 
 }
 
-recipeIDQueue = ['Southern-Chicken-and-Corn-Chowder-1067232', 'Roasted-Garlic_potato-Soup-My-Recipes', 'Turkey-Meatloaf-2505129'];
-recipeUrlQueue = getRecipeURLs(recipeIDQueue);
-getRecipeInfo(recipeUrlQueue);
+//ingredientsList = ['onion', 'carrot', 'milk'];
+// recipeIDQueue = ['Southern-Chicken-and-Corn-Chowder-1067232'];
 
+// recipeIDQueue = ['Southern-Chicken-and-Corn-Chowder-1067232', 'Roasted-Garlic_potato-Soup-My-Recipes', 'Turkey-Meatloaf-2505129'];
+// recipeUrlQ = getRecipeURLs(recipeIDQueue);
+// getRecipeInfo(recipeUrlQ);

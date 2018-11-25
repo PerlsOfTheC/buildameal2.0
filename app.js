@@ -1,3 +1,5 @@
+import * as mongo from "./config/mongodb";
+
 const express = require('express');
 const passport = require('passport');
 const path = require('path');
@@ -34,7 +36,7 @@ mongoose.connect(mongo.host);
 mongoose.connection.on('connected', () => {
     console.log('connected to datatbase' + mongo.host);
 } );
-
+users.
 //on error
 mongoose.connection.on('error', (err) => {
     console.log('Database error' + err);

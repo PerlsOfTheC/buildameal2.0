@@ -72,7 +72,7 @@ function addIngredient (ingredientID) {
     resultIngredients.push(filter);
   }
 }
-function getResultIngredients(){
+exports.getResultIngredients = function(){
   return resultIngredients;
 }
 
