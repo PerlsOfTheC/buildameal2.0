@@ -72,6 +72,9 @@ function addIngredient (ingredientID) {
     resultIngredients.push(filter);
   }
 }
+function getResultIngredients(){
+  return resultIngredients;
+}
 
 function addTimeFilter(timeID) {
   //Limits time filter to 1 option
@@ -145,7 +148,7 @@ function displayBanner() {
   var div, table, row, left, a, pic, right;
   var row1, linkText, p, row2, italicize, row2P, bold, boldText, row2Data, row3;
 
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 20; i++) {
     // White rectangle
     div = document.createElement("div");
     div.style.background = "white";

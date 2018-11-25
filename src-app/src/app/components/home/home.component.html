@@ -7,7 +7,7 @@
 <!-- Configure the left scroll pane -->
 <div class="left">
   <div style="text-align: center">
-    <button class = "findRecipes" onclick = "displayBanner()"><span>Find me recipes! </span></button>
+    <button (click)="addClicked()" class = "findRecipes" onclick = "displayBanner()"><span>Find me recipes! </span></button>
   </div>
 
   <!--Ingredients List -->
@@ -31,13 +31,11 @@
   </div>
 
   <!-- Search bar -->
-  <form (submit)="getSearchIngredient()">
   <button class="add" id = "add" onclick="addToCheckBox()"  style="float: right" ><span> Add </span></button>
   <span class="help"  style="float: right" ><span class = "tooltip"> ? <span class="tooltiptext"> Simply choose ingredients from the preloaded lists below and click to add to the ingredients list, or search for a total of 10 ingredients. </span></span></span>
   <div style="overflow: hidden; padding-right: .5em;">
-    <input type="text" name="myIngredients" ngModel="ingredients" spellcheck="true" placeholder="Search" style="width: 97%" class="form-control">
+    <input type="text" name="ingredient" spellcheck="true" placeholder="Search" style="width: 97%">
   </div>
-  </form>
 
   <!--filtering selection -->
   <button class="accordion" style = background:#D1DEB3 >Protein<img src = "assets/meat.png" height="20" width="20" hspace="3" align= "right"></button>
