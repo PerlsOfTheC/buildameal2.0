@@ -7,10 +7,7 @@ var actualFilter = ["396^Dairy-Free","397^Egg-Free","393^Gluten-Free","394^Peanu
 var timeFilterOn = false;
 var dietFilterOn = false;
 var sortingType;
-
 var count =0;
-
-
 
 $("document").ready(function() {
   var acc = document.getElementsByClassName("accordion");
@@ -29,10 +26,10 @@ $("document").ready(function() {
 });
 
 $("document").ready(function(){
-  $('#myInput').keypress(function(e){
-    if(e.keyCode==13)
+    $('#myInput').keypress(function(e){
+      if(e.keyCode==13)
       $('#add').click();
-  });
+    });
 });
 
 function addToCheckBox() {
@@ -52,15 +49,15 @@ function addToCheckBox() {
       $('#myInput').val('Max of 10 ingredients reached.').focus()
     }
     else { // only push if valid ingredient, not already in ingredients List && max not reached
-      resultIngredients.push(val);
-      li.onclick = function deleteItem() {
-        this.parentNode.removeChild(this);
-        var index = resultIngredients.indexOf(this.innerHTML);
-        resultIngredients.splice(index,1);
-      }
-      li.appendChild(document.createTextNode(val));
-      ul.appendChild(li);
-      $('#myInput').val('').focus();
+     resultIngredients.push(val);
+     li.onclick = function deleteItem() {
+      this.parentNode.removeChild(this);
+      var index = resultIngredients.indexOf(this.innerHTML);
+      resultIngredients.splice(index,1);
+     }
+     li.appendChild(document.createTextNode(val));
+     ul.appendChild(li);
+     $('#myInput').val('').focus();
     }
   }
 }
@@ -496,88 +493,88 @@ function display() {
 
   }else if (count == 3){
     console.log("count==3: " +count)
-    //salmon, mushroom, spinache, butter, nut allergy
-    console.log("count==3: " +count)
-    let testThree = [
-      //recipe1
-      'https://www.ketovale.com/recipe/salmon-spinach-mushrooms/',
-      'https://lh3.googleusercontent.com/Vz4jzDpLyov1CY0oq7l9zqdLs-bgRNsF8ihd20pLAavZw2BMVk21iAxL1Dhqb2rSOonkBdrDGispecGIgeAzg8s=s360-c',
-      'Steamed Salmon with Spinach and Mushrooms','salmon filet,'+
-      'butter,heavy cream,spinach,button mushrooms,lemon juice','25 min','4',
+      //salmon, mushroom, spinache, butter, nut allergy
+      console.log("count==3: " +count)
+       let testThree = [
+            //recipe1
+            'https://www.ketovale.com/recipe/salmon-spinach-mushrooms/',
+            'https://lh3.googleusercontent.com/Vz4jzDpLyov1CY0oq7l9zqdLs-bgRNsF8ihd20pLAavZw2BMVk21iAxL1Dhqb2rSOonkBdrDGispecGIgeAzg8s=s360-c',
+            'Steamed Salmon with Spinach and Mushrooms','salmon filet,'+
+            'butter,heavy cream,spinach,button mushrooms,lemon juice','25 min','4',
 
-      //recipe2
-      'https://www.tasteaholics.com/recipes/paleo/pan-seared-salmon-with-sauteed-mushrooms-spinach/',
-      'https://lh3.googleusercontent.com/24Zqm7yuX-Hd4MDOeNEa6bJwADt4BR2UzM3VIFzUT67NZ2BAzQKm4HXtZvnmfiHNZ92xtUf_qSgmdzo185WjvmA=s360-c',
-      'Seared Salmon with Sauteed Spinach & Mushrooms','olive oil,'+
-      'garlic,mushrooms,butter,Campari tomatoes,spinach,salt,pepper,'+
-      'balsamic vinegar,salmon fillets','30 min','4',
+            //recipe2
+            'https://www.tasteaholics.com/recipes/paleo/pan-seared-salmon-with-sauteed-mushrooms-spinach/',
+            'https://lh3.googleusercontent.com/24Zqm7yuX-Hd4MDOeNEa6bJwADt4BR2UzM3VIFzUT67NZ2BAzQKm4HXtZvnmfiHNZ92xtUf_qSgmdzo185WjvmA=s360-c',
+            'Seared Salmon with Sauteed Spinach & Mushrooms','olive oil,'+
+            'garlic,mushrooms,butter,Campari tomatoes,spinach,salt,pepper,'+
+            'balsamic vinegar,salmon fillets','30 min','4',
 
-      //recipe3
-      'http://livingthegourmet.com/2015/10/bumble-bee-superfresh-meals.html',
-      'https://lh3.googleusercontent.com/i061FnHKYvdl5j_mvMqCfTyGr3pmNRm2Nc29vFXsFXgMDtTQ8rw3sefs7qVEFGAsoYpFQyhTK-69bqF8eR8D=s360-c',
-      'Tilapia with Apricots & Wild Rice','tilapia,wild rice,dried '+
-      'apricots,button mushrooms,butter,olive oil,salt,black pepper,'+
-      'lemon,honey,fresh ground black pepper,salmon,baby spinach,'+
-      'garlic,linguine','25 min','4',
+            //recipe3
+            'http://livingthegourmet.com/2015/10/bumble-bee-superfresh-meals.html',
+            'https://lh3.googleusercontent.com/i061FnHKYvdl5j_mvMqCfTyGr3pmNRm2Nc29vFXsFXgMDtTQ8rw3sefs7qVEFGAsoYpFQyhTK-69bqF8eR8D=s360-c',
+            'Tilapia with Apricots & Wild Rice','tilapia,wild rice,dried '+
+            'apricots,button mushrooms,butter,olive oil,salt,black pepper,'+
+            'lemon,honey,fresh ground black pepper,salmon,baby spinach,'+
+            'garlic,linguine','25 min','4',
 
-      //recipe4
-      'http://www.tablespoon.com/recipes/salmon-mushroom-spinach-bake/cfb513da-63ae-439e-8d08-a6c34f14d2ee',
-      'https://lh3.googleusercontent.com/Gp18kNapshQqX4z10NeXQ3Y38FsAGsQlSkCy0htAUzaNNOH1Bo-q0O_vqLQOkNmFQd_zreOeX4cApUhdedvqzQ=s360-c',
-      'Salmon-Mushroom-Spinach Bake','skinless salmon fillets,butter'+
-      ',panko,Italian flat leaf parsley,fresh thyme leaves,sweet onion'+
-      ',salt,ground black pepper,white mushrooms,baby spinach','55 min','3',
+            //recipe4
+            'http://www.tablespoon.com/recipes/salmon-mushroom-spinach-bake/cfb513da-63ae-439e-8d08-a6c34f14d2ee',
+            'https://lh3.googleusercontent.com/Gp18kNapshQqX4z10NeXQ3Y38FsAGsQlSkCy0htAUzaNNOH1Bo-q0O_vqLQOkNmFQd_zreOeX4cApUhdedvqzQ=s360-c',
+            'Salmon-Mushroom-Spinach Bake','skinless salmon fillets,butter'+
+            ',panko,Italian flat leaf parsley,fresh thyme leaves,sweet onion'+
+            ',salt,ground black pepper,white mushrooms,baby spinach','55 min','3',
 
-      //recipe5
-      'https://confessionsofacleanfoodie.com/braised-salmon-in-a-mushroom-cream-sauce/',
-      'https://lh3.googleusercontent.com/r7Ng94qMml4AJswCV5zWsEEe9hqhz8EoEZqhXJlWgsNhRXY9OWLcf70gaArT5cQoXj8qboeeZMmxb7weYsB_=s360-c',
-      'Braised Salmon In A Mushroom Cream Sauce','ghee,salmon fillets'+
-      ',pepper,salt,paprika,onion,garlic cloves,red jalapeno pepper,'+
-      'shitake mushrooms,coconut aminos,seafood stock,coconut milk,baby' +
-      ' spinach leaves,cayenne pepper','40 min','4',
+            //recipe5
+            'https://confessionsofacleanfoodie.com/braised-salmon-in-a-mushroom-cream-sauce/',
+            'https://lh3.googleusercontent.com/r7Ng94qMml4AJswCV5zWsEEe9hqhz8EoEZqhXJlWgsNhRXY9OWLcf70gaArT5cQoXj8qboeeZMmxb7weYsB_=s360-c',
+            'Braised Salmon In A Mushroom Cream Sauce','ghee,salmon fillets'+
+            ',pepper,salt,paprika,onion,garlic cloves,red jalapeno pepper,'+
+            'shitake mushrooms,coconut aminos,seafood stock,coconut milk,baby' +
+            ' spinach leaves,cayenne pepper','40 min','4',
 
-      //recipe6
-      'http://www.wholefoodsmarket.com/recipe/salmon-wellington"},"id":"Salmon-Wellington-1462263',
-      'https://lh3.googleusercontent.com/UrYRQdHn55js3d4DMTjUG_XKZLoEvQZ_ld4_uhNdcuvYscifj4Lq8xX63xzJ8abrPlnmcmnqIX4QQGlwh-dzfQ8=s360-c',
-      'Salmon Wellington','unsalted butter,mushrooms,shallots,fine sea' +
-      ' salt,freshly ground pepper,chopped fresh thyme,spinach,frozen puff '+
-      'pastry,skinless salmon fillet,dry red wine,large egg','80 min','3',
+            //recipe6
+            'http://www.wholefoodsmarket.com/recipe/salmon-wellington"},"id":"Salmon-Wellington-1462263',
+            'https://lh3.googleusercontent.com/UrYRQdHn55js3d4DMTjUG_XKZLoEvQZ_ld4_uhNdcuvYscifj4Lq8xX63xzJ8abrPlnmcmnqIX4QQGlwh-dzfQ8=s360-c',
+            'Salmon Wellington','unsalted butter,mushrooms,shallots,fine sea' +
+            ' salt,freshly ground pepper,chopped fresh thyme,spinach,frozen puff '+
+             'pastry,skinless salmon fillet,dry red wine,large egg','80 min','3',
 
-      //recipe7
-      'http://cookinginsens.wordpress.com/2014/03/06/teriyaki-salmon-with-chinese-noodles/"},"id":"Teriyaki-Salmon-with-Chinese-Noodles-1801029',
-      'https://lh3.googleusercontent.com/oJscIPPB7ocko-kVM1TKox0VJbgogWpKc_d3rqrwEdedwTH6nb4gkqEFnOvvvoEawmNEx63Y2rPhkswYzJ4ydA=s360-c',
-      'Teriyaki Salmon with Chinese Noodles','salmon fillets,tamari '+
-      'soy sauce,mirin,brown sugar,white sugar,garlic cloves,fresh '+
-      'ginger,oyster mushrooms,butter,ginger,spring onion,chicken '+
-      'broth,Chinese egg noodles,baby spinach,olive oil','45 min','4',
+            //recipe7
+            'http://cookinginsens.wordpress.com/2014/03/06/teriyaki-salmon-with-chinese-noodles/"},"id":"Teriyaki-Salmon-with-Chinese-Noodles-1801029',
+            'https://lh3.googleusercontent.com/oJscIPPB7ocko-kVM1TKox0VJbgogWpKc_d3rqrwEdedwTH6nb4gkqEFnOvvvoEawmNEx63Y2rPhkswYzJ4ydA=s360-c',
+            'Teriyaki Salmon with Chinese Noodles','salmon fillets,tamari '+
+            'soy sauce,mirin,brown sugar,white sugar,garlic cloves,fresh '+
+            'ginger,oyster mushrooms,butter,ginger,spring onion,chicken '+
+            'broth,Chinese egg noodles,baby spinach,olive oil','45 min','4',
 
-      //recipe8
-      'http://www.icancookthat.org/2015/03/lime-teriyaki-salmon-rice-bowls.html"},"id":"Lime-Teriyaki-Salmon-Rice-Bowls-1319987',
-      'http://lh3.googleusercontent.com/Casxgv212T0vVTfPZ2NclDg7OGNzC9lNyNC5QLr4coK9OAWRpELZEnEYGAOhg7ZaN2ycykl7Uw66h8U1fjPxqA=s360-c',
-      'Lime-Teriyaki Salmon Rice Bowls','cooked rice,olive oil,'+
-      'baby bella mushrooms,salt,unsalted butter,large garlic '+
-      'cloves,red pepper flakes,pure maple syrup,fresh lime juice'+
-      ',reduced sodium soy sauce,cornstarch,salmon fillets,baby spinach'+
-      ',red bell pepper,black sesame seeds','30 min','4',
+            //recipe8
+            'http://www.icancookthat.org/2015/03/lime-teriyaki-salmon-rice-bowls.html"},"id":"Lime-Teriyaki-Salmon-Rice-Bowls-1319987',
+            'http://lh3.googleusercontent.com/Casxgv212T0vVTfPZ2NclDg7OGNzC9lNyNC5QLr4coK9OAWRpELZEnEYGAOhg7ZaN2ycykl7Uw66h8U1fjPxqA=s360-c',
+            'Lime-Teriyaki Salmon Rice Bowls','cooked rice,olive oil,'+
+            'baby bella mushrooms,salt,unsalted butter,large garlic '+
+            'cloves,red pepper flakes,pure maple syrup,fresh lime juice'+
+            ',reduced sodium soy sauce,cornstarch,salmon fillets,baby spinach'+
+            ',red bell pepper,black sesame seeds','30 min','4',
 
-      //recipe9
-      'https://www.tasteaholics.com/recipes/paleo/pan-seared-salmon-with-sauteed-mushrooms-spinach/',
-      'https://lh3.googleusercontent.com/24Zqm7yuX-Hd4MDOeNEa6bJwADt4BR2UzM3VIFzUT67NZ2BAzQKm4HXtZvnmfiHNZ92xtUf_qSgmdzo185WjvmA=s360-c',
-      'Seared Salmon with Sauteed Spinach & Mushrooms',
-      'olive oil,garlic,mushrooms,butter,tomatoes,spinach,salt,pepper,'+
-      'balsamic vinegar,salmon fillets','20 min','4',
+            //recipe9
+            'https://www.tasteaholics.com/recipes/paleo/pan-seared-salmon-with-sauteed-mushrooms-spinach/',
+            'https://lh3.googleusercontent.com/24Zqm7yuX-Hd4MDOeNEa6bJwADt4BR2UzM3VIFzUT67NZ2BAzQKm4HXtZvnmfiHNZ92xtUf_qSgmdzo185WjvmA=s360-c',
+            'Seared Salmon with Sauteed Spinach & Mushrooms',
+            'olive oil,garlic,mushrooms,butter,tomatoes,spinach,salt,pepper,'+
+            'balsamic vinegar,salmon fillets','20 min','4',
 
-      //recipe10
-      'http://allrecipes.com/recipe/213130/grande-ravioli-salmone-e-vedure/',
-      'http://lh6.ggpht.com/tNPMD6YNmL4SknHGeDD1ZShoDcdlTKBH3bP6my3HHWzh4TdJWyn89Eo3PeywMhzR9E6mkDo_5Xv0RzXzVRpBig=s360-c',
-      'Grande Ravioli Salmone e Vedure','olive oil,garlic,green '+
-      'onion,eggplant,sea salt,pepper,fresh mushrooms,fresh '+
-      'spinach,salmon,ricotta cheese,cottage cheese,grated '+
-      'parmesan cheese,finely chopped fresh parsley,dried basil'+
-      ',pasta sheets,cauliflower florets,dry bread crumbs,olive '+
-      'oil cooking spray,cherry tomatoes,zucchini,butter','120 min','5'
-    ];
+            //recipe10
+            'http://allrecipes.com/recipe/213130/grande-ravioli-salmone-e-vedure/',
+            'http://lh6.ggpht.com/tNPMD6YNmL4SknHGeDD1ZShoDcdlTKBH3bP6my3HHWzh4TdJWyn89Eo3PeywMhzR9E6mkDo_5Xv0RzXzVRpBig=s360-c',
+            'Grande Ravioli Salmone e Vedure','olive oil,garlic,green '+
+            'onion,eggplant,sea salt,pepper,fresh mushrooms,fresh '+
+            'spinach,salmon,ricotta cheese,cottage cheese,grated '+
+            'parmesan cheese,finely chopped fresh parsley,dried basil'+
+            ',pasta sheets,cauliflower florets,dry bread crumbs,olive '+
+            'oil cooking spray,cherry tomatoes,zucchini,butter','120 min','5'
+          ];
 
-    displayBanner(testThree);
+          displayBanner(testThree);
   }else {
     console.log("count==else: " +count)
     let testFour = [
@@ -611,7 +608,7 @@ function display() {
       'https://lh3.googleusercontent.com/UrYRQdHn55js3d4DMTjUG_XKZLoEvQZ_ld4_uhNdcuvYscifj4Lq8xX63xzJ8abrPlnmcmnqIX4QQGlwh-dzfQ8=s360-c',
       'Salmon Wellington','unsalted butter,mushrooms,shallots,fine sea' +
       ' salt,freshly ground pepper,chopped fresh thyme,spinach,frozen puff '+
-      'pastry,skinless salmon fillet,dry red wine,large egg','80 min','3',
+       'pastry,skinless salmon fillet,dry red wine,large egg','80 min','3',
 
       //recipe5
       'http://www.tablespoon.com/recipes/salmon-mushroom-spinach-bake/cfb513da-63ae-439e-8d08-a6c34f14d2ee',
