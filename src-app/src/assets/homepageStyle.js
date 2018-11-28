@@ -182,7 +182,6 @@ function displayBanner(testCase) {
   var div, table, row, left, a, pic, right;
   var row1, linkText, p, row2, italicize, row2P, bold, boldText, row2Data, row3;
 
-
   for (i = 0; i < 10; i++) {
     // White rectangle
     div = document.createElement("div");
@@ -224,6 +223,7 @@ function displayBanner(testCase) {
     right = document.createElement("TD");
     right.style.width = "80%";
 
+    // Row 1: recipe Name
     row1 = document.createElement("div");
     row1.style.marginTop = "-3vh";
     row1.style.fontWeight = "bold";
@@ -254,6 +254,7 @@ function displayBanner(testCase) {
     p.style.textOverflow = "ellipsis";
     p.style.overflow = "hidden";
 
+    // Row 2: list of ingredients
     row2 = document.createElement("div");
     row2.style.marginTop = "1vh";
     row2.style.height = "5vh";
@@ -275,12 +276,13 @@ function displayBanner(testCase) {
     row2.append(bold);
     row2.append(italicize);
 
+    // Row 3
     row3 = document.createElement("div");
     row3.style.marginTop = "1vh";
     row3.style.width = "100%";
     row3.style.height = "3vh";
     row3.style.display = "flex";
-
+    // Cooking time
     row3A = document.createElement("div");
     bold = document.createElement('strong');
     boldText = document.createTextNode("COOKING TIME: ");
@@ -294,19 +296,22 @@ function displayBanner(testCase) {
     row3A.style.fontSize = "2vh";
     row3A.style.textOverflow = "ellipsis";
     row3A.style.overflow = "hidden";
-
+    // Rating
     row3B = document.createElement("div");
     bold = document.createElement('strong');
     boldText = document.createTextNode("RATING: ");
     var starRating = "";
     var rating = testCase[(i*6)+5];
-    for (var k = 0; k<5; k++) {
-      if (k<rating)
-        starRating+= "\u2605";
-      else
-        starRating+= "\u2606";
+    if (rating != null) {
+      for (var k = 0; k<5; k++) {
+        if (k<rating)
+          starRating+= "\u2605";
+        else
+          starRating+= "\u2606";
+      }
     }
-
+    else
+      starRating = "unavailable"
     row3BData = document.createTextNode(starRating); //RATING
     row3B.style.height = "3vh";
     row3B.style.padding = "0vh 10vh 0px 10px";
