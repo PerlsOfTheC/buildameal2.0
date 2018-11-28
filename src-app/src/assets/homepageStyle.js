@@ -1,13 +1,12 @@
+var resultIngredients = []; // the displayed Ingredients
 var resultFilter = []; // the displayed filters
 var finalResultFilter = [];  // the filters with proper searchID
-
-var resultIngredients = [];
 var expectedFilter = ["Dairy-Free","Egg-Free","Gluten-Free","Peanut-Free","Seafood-Free", "Sesame-Free","Soy-Free", "Sulfite-Free","Tree Nut-Free","Wheat-Free", "Lacto vegetarian", "Ovo vegetarian", "Pescetarian","Vegan","Lacto-ovo vegetarian"];
 var actualFilter = ["396^Dairy-Free","397^Egg-Free","393^Gluten-Free","394^Peanut-Free","398^Seafood-Free","399^Sesame-Free","400^Soy-Free", "401^Sulfite-Free", "395^Tree Nut-Free","392^Wheat-Free",  "388^Lacto vegetarian", "389^Ovo vegetarian", "390^Pescetarian","387^Lacto-ovo vegetarian"];
 var timeFilterOn = false;
 var dietFilterOn = false;
 var sortingType;
-var count =0;
+var count = 0;
 
 $("document").ready(function() {
   var acc = document.getElementsByClassName("accordion");
@@ -32,6 +31,7 @@ $("document").ready(function(){
     });
 });
 
+// Adds ingredient from search bar
 function addToCheckBox() {
   var ul = document.getElementById("ingredientCheckbox");
   var li = document.createElement("li");
@@ -62,6 +62,7 @@ function addToCheckBox() {
   }
 }
 
+// Adds ingredient from selection
 function addIngredient (ingredientID) {
   var filter = document.getElementById(ingredientID).value;
   if (resultIngredients.indexOf(filter) <= -1 && resultIngredients.length<10) {
@@ -130,6 +131,22 @@ function addGenericFilter(filterID) {
     document.getElementById("filterSelection").appendChild(li);
     resultFilter.push(filter);
   }
+}
+
+function removeAllIngredients() {
+  var ul = document.getElementById("ingredientCheckbox");
+  while (ul.firstChild)
+    ul.removeChild(ul.firstChild);
+  resultIngredients = [];
+}
+
+function removeAllFilters() {
+  var ul = document.getElementById("filterSelection");
+  while (ul.firstChild)
+    ul.removeChild(ul.firstChild);
+  resultFilter = [];
+  timeFilterOn = false;
+  dietFilterOn = false;
 }
 
 function createFinalResultFilter() {
@@ -281,7 +298,16 @@ function displayBanner(testCase) {
     row3B = document.createElement("div");
     bold = document.createElement('strong');
     boldText = document.createTextNode("RATING: ");
-    row3BData = document.createTextNode(testCase[(i*6)+5]+"/5"); //RATING
+    var starRating = "";
+    var rating = testCase[(i*6)+5];
+    for (var k = 0; k<5; k++) {
+      if (k<rating)
+        starRating+= "\u2605";
+      else
+        starRating+= "\u2606";
+    }
+
+    row3BData = document.createTextNode(starRating); //RATING
     row3B.style.height = "3vh";
     row3B.style.padding = "0vh 10vh 0px 10px";
     row3B.style.width = "50%";
@@ -310,6 +336,7 @@ function sort() {
   // x = Sort by method (0 = alphabetical, 1 = by rating; 2 = Prep Time (low to high))
 }
 
+// Displays a button to allow user to scroll up
 function showTopButton() {
   if (document.getElementById('rightID').scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("upButton").style.display = "block";
@@ -317,6 +344,8 @@ function showTopButton() {
         document.getElementById("upButton").style.display = "none";
     }
 }
+
+// Scrolls to top of right scroll pane
 function scrollToTop() {
   document.getElementById('rightID').scrollTop = 0;
 }

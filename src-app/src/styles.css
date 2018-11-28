@@ -98,6 +98,17 @@ ul:hover li{
   margin-top:5px;
 }
 
+.removeButton {
+  padding: "0px";
+  color: white;
+  background-color: #C8C8C8;
+  border: none;
+  font-family: "Dosis", cursive, sans-serif;
+  margin : "5px";
+  display:block;
+  margin: 0 auto;
+}
+
 /* ---------search bar--------*/
 input {
   margin: 10px;
