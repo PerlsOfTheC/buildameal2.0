@@ -144,9 +144,10 @@ function createFinalResultFilter() {
   console.log(finalResultFilter);
 }
 
-
-
 function displayBanner(testCase) {
+  var myDiv = document.getElementById('rightID');
+  myDiv.scrollTop = 0;
+
   var ing = ("\xa0\xa0\xa0Showing results for: \xa0").bold();
   var filter = ("\xa0\xa0\xa0Filters applied: \xa0").bold();
   var ingList = ing + resultIngredients.join(', ');
