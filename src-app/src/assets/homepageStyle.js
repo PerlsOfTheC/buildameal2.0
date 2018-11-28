@@ -145,8 +145,7 @@ function createFinalResultFilter() {
 }
 
 function displayBanner(testCase) {
-  var myDiv = document.getElementById('rightID');
-  myDiv.scrollTop = 0;
+  document.getElementById('rightID').scrollTop = 0;
 
   var ing = ("\xa0\xa0\xa0Showing results for: \xa0").bold();
   var filter = ("\xa0\xa0\xa0Filters applied: \xa0").bold();
@@ -268,7 +267,7 @@ function displayBanner(testCase) {
     row3A = document.createElement("div");
     bold = document.createElement('strong');
     boldText = document.createTextNode("COOKING TIME: ");
-    row3AData = document.createTextNode(testCase[(i*6)+4]); //COOKING TIME
+    row3AData = document.createTextNode(testCase[(i*6)+4]); //COOKING TIME ( + " min.")
     row3A.style.padding = "0vh 10vh 0px 0px";
     row3A.style.height = "3vh";
     row3A.style.width = "50%";
@@ -282,7 +281,7 @@ function displayBanner(testCase) {
     row3B = document.createElement("div");
     bold = document.createElement('strong');
     boldText = document.createTextNode("RATING: ");
-    row3BData = document.createTextNode(testCase[(i*6)+5]); //RATING
+    row3BData = document.createTextNode(testCase[(i*6)+5]+"/5"); //RATING
     row3B.style.height = "3vh";
     row3B.style.padding = "0vh 10vh 0px 10px";
     row3B.style.width = "50%";
@@ -306,13 +305,21 @@ function displayBanner(testCase) {
   }
 }
 
-
-
 function sort() {
   sortingType = document.getElementById("sortByList").selectedIndex;
   // x = Sort by method (0 = alphabetical, 1 = by rating; 2 = Prep Time (low to high))
 }
 
+function showTopButton() {
+  if (document.getElementById('rightID').scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("upButton").style.display = "block";
+    } else {
+        document.getElementById("upButton").style.display = "none";
+    }
+}
+function topFunction() {
+  document.getElementById('rightID').scrollTop = 0;
+}
 
 function display() {
   count += 1;
