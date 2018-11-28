@@ -317,7 +317,7 @@ function showTopButton() {
         document.getElementById("upButton").style.display = "none";
     }
 }
-function topFunction() {
+function scrollToTop() {
   document.getElementById('rightID').scrollTop = 0;
 }
 
