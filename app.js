@@ -10,7 +10,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongo= require('./config/mongodb');
 const users = require('./routes/users');
-// const yummly = require('/yummly_api/yummly');
+const yummly = require('./src-app/src/yummly');
 
 
 //Middleware, body parser

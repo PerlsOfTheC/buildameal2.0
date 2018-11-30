@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "\" recipe building web service",
   "main": "app.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app"
@@ -12,6 +13,7 @@
     "bcryptjs": "*",
     "body-parser": "*",
     "cors": "*",
+    "dotenv": "^6.1.0",
     "express": "*",
     "jsonwebtoken": "*",
     "mongoose": "*",
